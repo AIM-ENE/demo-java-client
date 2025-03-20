@@ -1,0 +1,16 @@
+@startuml
+title Context Diagram for the ANS application
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+SHOW_PERSON_OUTLINE()
+Person(student, "Student", "A student who uses the system to make exams")
+Person(teacher, "Teacher", "A teacher who uses the system create and grade exams")
+System(ans, "System", "ANS")
+System_Ext(osiris, "Osiris", "Contains registered students for exams")
+System_Ext(schoolyear, "SchoolYear", "Secures ANS so it can only be used in a safe browser")
+Rel(student, ans, "Makes exams")
+Rel(teacher, ans, "Creates and grades exams")
+Rel(ans, osiris, "Checks if student is registered for exams")
+Rel(ans, schoolyear, "Checks if ANS is used in a safe browser")
+
+@enduml
